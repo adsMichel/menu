@@ -32,6 +32,10 @@ b {
     font-family: 'PoppinsMedium';
 }
 
+.hidden {
+    display: none !important;
+}
+
 a.navbar-brand {
     margin-left: -25px;
 }
@@ -329,6 +333,16 @@ a.navbar-brand {
     padding: 100px 0 150px;
 }
 
+.depoimentos .background-depoimentos {
+    position: relative;
+    left: 0;
+    top: 0;
+    height: 500px;
+    background-image: url('../img/bg-icons-1.png');
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
 .card-depoimentos {
     height: 390px;
     width: 390px;
@@ -358,6 +372,14 @@ a.navbar-brand {
 
 #depoimento-1 .imagem-depoimento {
     background-image: url(../img/diego.jpg);
+    background-size: cover;
+}
+#depoimento-2 .imagem-depoimento {
+    background-image: url(../img/ana.jpg);
+    background-size: cover;
+}
+#depoimento-3 .imagem-depoimento {
+    background-image: url(../img/joao.jpg);
     background-size: cover;
 }
 
