@@ -220,3 +220,24 @@ a.navbar-brand {
     margin-bottom: 10px;
 }
 
+.cardapio {
+    padding: 50px 0 150px;
+}
+
+.card-item {
+    height: 360px;
+}
+
+.card-item .img-produto img {
+    width: 100%;
+    border-radius: 11px;
+}
+
+.card-item .title-produto {
+    color: var(--color-black);
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+    height: 40px;
+    margin-bottom: 0;
+}
