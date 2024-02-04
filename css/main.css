@@ -418,3 +418,52 @@ a.navbar-brand {
     justify-content: center;
     align-items: end;
 }
+
+.reserva {
+    padding: 100px 0 150px;
+}
+
+.card-secondary {
+    background-color: var(--color-secondary);
+    border-radius: 70px;
+    padding: 90px;
+}
+
+.card-reserva {
+    width: 320px;
+    height: 320px;
+    border-radius: 120px;
+    background-color: var(--color-white);
+    position: absolute;
+    right: 0;
+    top: -25px;
+}
+
+.reserva .img-banner img {
+    width: 100%;
+}
+
+footer {
+    background-color: var(--color-secondary);
+}
+
+.logo-footer {
+    width: 150px;
+}
+
+.container-logo-footer, .container-texto-footer, .container-redes-footer {
+    display: flex;
+    align-items: center;
+}
+
+.container-logo-footer {
+    justify-content: start;
+}
+
+.container-texto-footer {
+    justify-content: center;
+}
+
+.container-redes-footer {
+    justify-content: end;
+}
