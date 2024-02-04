@@ -12,12 +12,14 @@ cardapio.eventos = {
 
 cardapio.metodos = {
     // obter a lista de itens do cardapio
-    obterItensCardapio: () => {
-        var filtro = MENU['burgers'];
+    obterItensCardapio: (categoria = 'burgers') => {
+        var filtro = MENU[categoria];
         console.log(filtro);
 
+        $("#itemsCardapio").html('') //limpa a lista de produtos
+
         $.each(filtro, (i, e) => {
-            let temp = cardapio.templates.item;
+            let temp = cardapio.templates.item.replace(/\${img}/g, e.img).replace(/\${nome}/g, e.name).replace(/\${preco}/g, e.price.toFixed(2).replace('.', ','));//regex filtrar coisas dentro de texto
 
             $("#itemsCardapio").append(temp)
         })
@@ -29,13 +31,13 @@ cardapio.templates = {
         <div class="col-3 mb-3">
             <div class="card card-item"> 
                 <div class="img-produto">
-                    <img src="./img/cardapio/burguers/burger-au-poivre-kit-4-pack.3ca0e39b02db753304cd185638dad518.jpg" alt="Hamburguer">
+                    <img src="\${img}" />
                 </div>
                 <p class="title-produto text-center mt-4">
-                    <b>Nome</b>
+                    <b>\${nome}</b>
                 </p>
                 <p class="price-produto text-center">
-                    <b>R$154,90</b>
+                    <b>R$ \${preco}</b>
                 </p>
                 <div class="add-carrinho">
                     <span class="btn-menos"><i class="fas fa-minus"></i></span>
