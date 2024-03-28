@@ -7,8 +7,18 @@
     <link rel="stylesheet" href="./css/bootstrap.min.css">
     <link rel="stylesheet" href="./css/fontawesome.css">
     <link rel="stylesheet" href="./css/main.css">
+    <link rel="stylesheet" href="./css/animate.css">
 </head>
 <body>
+
+    <div class="container-mensagens" id="container-mensagens">
+
+    </div>
+
+    <a class="botao-carrinho hidden" onclick="cardapio.metodos.abrirCarrinho(true)">
+        <div class="badge-total-carrinho">0</div>
+        <i class="fa fa-shopping-bag"></i>
+    </a>
     <section class="header">
         <div class="container">
             <div class="navbar navbar-expand-lg pl-0 pr-0">
@@ -31,11 +41,14 @@
                             <a class="nav-link" href="#cardapio"><b>Cardápio</b></a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="#depoismentos"><b>Depoimentos</b></a>
+                            <a class="nav-link" href="#depoimentos"><b>Depoimentos</b></a>
                         </li>
                     </ul>
-                    <a href="#" class="btn btn-white btn-icon">
-                        Meu carrinho<span class="fa fa-shopping-bag icon"></span>
+                    <a class="btn btn-white btn-icon" onclick="cardapio.metodos.abrirCarrinho(true)">
+                        Meu carrinho<span class="icon">
+                            <div class="container-total-carrinho badge-total-carrinho hidden">0</div>
+                            <i class="fa fa-shopping-bag"></i>
+                        </span>
                     </a>
                 </div>
             </div>
@@ -321,13 +334,13 @@
     <div class="modal-full hidden" id="modalCarrinho">
         <div class="m-header">
             <div class="container">
-                <a href="#" class="btn btn-white btn-sm float-right">
+                <a href="#" class="btn btn-white btn-sm float-right" onclick="cardapio.metodos.abrirCarrinho(false)">
                     Fechar
                 </a>
                 <div class="etapas">
                     <div class="etapa etapa1 active">1</div>
-                    <div class="etapa etapa2 ">2</div>
-                    <div class="etapa etapa3 ">3</div>
+                    <div class="etapa etapa2">2</div>
+                    <div class="etapa etapa3">3</div>
                 </div>
                 <p class="title-carrinho mt-4">
                     <b id="lblTituloEtapa">Seu carrinho</b>
@@ -338,25 +351,7 @@
         <div class="m-body">
             <div class="container">
                 <div class="row mr-0 ml-0 hidden" id="itensCarrinho">
-                    <div class="col-12 item-carrinho">
-                        <div class="img-produto">
-                            <img src="./img/cardapio/burguers/gotts-complete-cheeseburger-kit-for-4.7bdc74104b193427b3fe6eae39e05b5e.jpg" alt="Lanche">
-                        </div>
-                        <div class="dados-produto">
-                            <p class="title-produto">
-                                <b>Nome produto</b>
-                            </p>
-                            <p class="price-produto">
-                                <b>R$ 17,99</b>
-                            </p>
-                        </div>
-                        <div class="add-carrinho">
-                            <span class="btn-menos"><i class="fas fa-minus"></i></span>
-                            <span class="add-numero-itens">0</span>
-                            <span class="btn-mais"><i class="fas fa-plus"></i></span>
-                            <span class="btn btn-remove"><i class="fas fa-times"></i></span>
-                        </div>
-                    </div>
+                    
                 </div>
 
                 <div class="row mr-0 ml-0 hidden" id="localEntrega">
@@ -438,7 +433,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="row mr-0 ml-0" id="resumoCarrinho">
+                <div class="row mr-0 ml-0 hidden" id="resumoCarrinho">
                     <div class="col-12">
                         <p class="title-carrinho mt-4">
                             <b>Itens do pedido:</b>
@@ -500,10 +495,10 @@
                         <span class="valor-total" id="lblValorTotal"><b>R$ 100,00</b></span>
                     </p>
                 </div>
-                <a href="#" class="btn btn-yellow float-right" id="btnEtapaPedido">Continuar</a>
-                <a href="#" class="btn btn-yellow float-right hidden" id="btnEtapaEndereco">Revisar pedido</a>
-                <a href="#" class="btn btn-yellow float-right hidden" id="btnEtapaResumo">Enviar pedido</a>
-                <a href="#" class="btn btn-white float-right mr-3 hidden" id="btnVoltar">Voltar</a>
+                <a class="btn btn-yellow float-right" id="btnEtapaPedido" onclick="cardapio.metodos.carregarEtapa(2)">Continuar</a>
+                <a class="btn btn-yellow float-right hidden" id="btnEtapaEndereco" onclick="cardapio.metodos.carregarEtapa(3)">Revisar pedido</a>
+                <a class="btn btn-yellow float-right hidden" id="btnEtapaResumo">Enviar pedido</a>
+                <a class="btn btn-white float-right mr-3 hidden" id="btnVoltar" onclick="cardapio.metodos.voltarEtapa()">Voltar</a>
             </div>
         </div>
     </div>
