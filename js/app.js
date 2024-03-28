@@ -236,12 +236,14 @@ cardapio.metodos = {
         let qntdAtual = parseInt($("#qntd-carrinho-" + id).text());
         
         $("#qntd-carrinho-" + id).text(qntdAtual + 1);
-        cardapio.metodos.atualizarCarrinho(id, qntdAtual + 1); // aula 25. minuto 23
+        cardapio.metodos.atualizarCarrinho(id, qntdAtual + 1);
 
     },
-
+    // remove itens do carrinho
     removerItemCarrinho: (id) => {
-
+        MEU_CARRINHO = $.grep(MEU_CARRINHO, (e, i) => {return e.id != id});
+        cardapio.metodos.carregarCarrinho();
+        cardapio.metodos.atualizarBadgeTotal();
     },
 
     // atualiza o carrinho com a qntd atual
