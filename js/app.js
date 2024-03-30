@@ -5,13 +5,17 @@ $(document).ready(function () {
 var cardapio = {};
 
 var MEU_CARRINHO = [];
+var MEU_ENDERECO = null;
 
 var VALOR_CARRINHO = 0;
 var VALOR_ENTREGA = 5;
 
+var CELULAR_EMPRESA = '5561994078504';
+
 cardapio.eventos = {
     init: () => {
         cardapio.metodos.obterItensCardapio();
+        cardapio.metodos.carregarBotaoReserva();
     }
 }
 
@@ -68,7 +72,7 @@ cardapio.metodos = {
         }
     },
 
-    // diminuir a quantidade de itens no cardapio
+    // aumentar a quantidade de itens no cardapio
     aumentarQuantidade: (id) => {
         let qntdAtual = parseInt($("#qntd-" + id).text());
 
@@ -250,6 +254,7 @@ cardapio.metodos = {
         cardapio.metodos.atualizarCarrinho(id, qntdAtual + 1);
 
     },
+
     // remove itens do carrinho
     removerItemCarrinho: (id) => {
         MEU_CARRINHO = $.grep(MEU_CARRINHO, (e, i) => {return e.id != id});
@@ -268,6 +273,7 @@ cardapio.metodos = {
         cardapio.metodos.carregarValores();
 
     },
+
     // carrega os valores de subtotal, entrega e total
 
     carregarValores: () => {
@@ -291,7 +297,118 @@ cardapio.metodos = {
         })
     },
 
-    mensagem: (texto, cor = 'red', tempo = 3500) => {
+    // valida se existe algum pedido
+    carregarEndereco: () => {
+
+        if (MEU_CARRINHO.length <= 0) {
+            cardapio.metodos.mensagem('Seu carrinho está vazio.')
+            return;
+        }
+
+        cardapio.metodos.carregarEtapa(2);
+    },
+
+    // validacao pedido antes da etapa 3
+    resumoPedido: () => {
+        let cep = $("#txtCep").val().trim().replace(/\D/g, ''); // trocar para telefone
+        let endereco = $("#txtEndereco").val().trim();
+
+        if (cep != "") {
+
+            console.log("Deu certo");
+            
+        } else {
+            cardapio.metodos.mensagem("Digite seu telefone, por favor.");
+            $("#txtCep").focus();
+        }
+
+        if (cep.length <= 0) {
+            cardapio.metodos.mensagem('Informe o CEP, por favor.');
+            $("#txtCep").focus();
+            return;
+        }
+
+        if (endereco.length <= 0) {
+            cardapio.metodos.mensagem('Informe o endereço, por favor.');
+            $("#txtEndereco").focus();
+            return;
+        }
+
+        MEU_ENDERECO = {
+            cep: cep,
+            endereco: endereco
+        }
+
+        cardapio.metodos.carregarEtapa(3);
+        cardapio.metodos.carregarResumo();
+
+    },
+
+    // carrega a etapa de resumo do pedido
+    carregarResumo: () => {
+
+        $("#listaItensResumo").html("");
+
+        $.each(MEU_CARRINHO, (i, e) => {
+
+            let temp = cardapio.templates.itemResumo.replace(/\${img}/g, e.img)
+                .replace(/\${nome}/g, e.name)
+                .replace(/\${preco}/g, e.price.toFixed(2).replace('.', ','))
+                .replace(/\${qntd}/g, e.qntd) //regex filtrar coisas dentro de texto
+
+            $("#listaItensResumo").append(temp);
+
+        })
+
+        $("#resumoEndereco").html(`${MEU_ENDERECO.cep}`);
+        $("#cidadeEndereco").html(`${MEU_ENDERECO.endereco}`);
+
+        cardapio.metodos.finalizarPedido();
+
+    },
+
+    // atualiza o link do botão do Whatsapp
+    finalizarPedido: () => {
+        if (MEU_CARRINHO.length > 0 && MEU_ENDERECO != null) {
+
+            var texto = "Olá gostaria de fazer um pedido:";
+            texto += `\n*Itens do pedido:*\n\n\${itens}`;
+            texto += `\n*Endereço de entrega:*`;
+            texto += `\n${MEU_ENDERECO.cep}, ${MEU_ENDERECO.endereco}`;
+            texto += `\n\n*Total (com entrega): R$ ${(VALOR_CARRINHO + VALOR_ENTREGA).toFixed(2).replace('.', ',')}*`;
+
+            var itens = ""
+
+            $.each(MEU_CARRINHO, (i, e) => {
+                itens += `*${e.qntd}x* ${e.name} ....... R$ ${e.price.toFixed(2).replace('.', ',')}\n`;
+
+                if ((i + 1) == MEU_CARRINHO.length) {
+
+                    texto = texto.replace(/\${itens}/g, itens);
+
+                    // converte a url
+
+                    let encode = encodeURI(texto);
+                    let URL = `https://wa.me/${CELULAR_EMPRESA}?text=${encode}`;
+                    
+                    $("#btnEtapaResumo").attr('href', URL);
+                    
+                }
+            })
+        }
+    },
+    
+    carregarBotaoReserva: () => {
+        
+        var texto = "Olá! Gostaria de fazer uma *reserva*.";
+        
+        let encode = encodeURI(texto);
+        let URL = `https://wa.me/${CELULAR_EMPRESA}?text=${encode}`;
+
+        $("#btnReserva").attr('href', URL);
+    },
+
+    mensagem: (texto, cor = 'red', tempo = 2000) => {
         
         let id = Math.floor(Date.now() * Math.random()).toString();
         let msg = `<div class="animated fadeInDown toast ${cor}" id="msg-${id}">${texto}</div>`;
@@ -347,5 +464,24 @@ cardapio.templates = {
                 <span class="btn btn-remove no-mobile" onclick="cardapio.metodos.removerItemCarrinho('\${id}')"><i class="fa fa-times"></i></span>
             </div>
         </div>
-    `
+    `,
+
+    itemResumo: `
+    <div class="col-12 item-carrinho resumo">
+        <div class="img-produto-resumo">
+            <img src="\${img}">
+        </div>
+        <div class="dados-produto">
+            <p class="title-produto-resumo">
+                <b>\${nome}</b>
+            </p>
+            <p class="price-produto-resumo">
+                <b>R$ \${preco}</b>
+            </p>
+        </div>
+        <p class="quantidade-produto-resumo">
+            x <b>\${qntd}</b>
+        </p>
+    </div>
+`
 }

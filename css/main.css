@@ -476,7 +476,7 @@ footer {
     right: 0;
     padding: 50px;
     background: var(--color-white);
-    z-index: 9999;
+    z-index: 9998;
     overflow-x: hidden;
     overflow-y: auto;
     display: flex;

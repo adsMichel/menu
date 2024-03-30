@@ -62,8 +62,8 @@
                         <h1><b>Escolha sua comida <b class="color-primary">favorita</b></b></h1>
                         <p>Aproveite nosso cardápio! Escolha o que desejar e receba em sua casa de forma rápida e segura.</p>
                         <div>
-                            <a href="#" class="btn btn-yellow mt-4 mr-3">Ver cardápio</a>
-                            <a href="#" class="btn btn-white btn-icon-left mt-4 mr-3">
+                            <a href="#cardapio" class="btn btn-yellow mt-4 mr-3">Ver cardápio</a>
+                            <a href="tel:5561994078504" class="btn btn-white btn-icon-left mt-4 mr-3">
                                 <span class="icon-left"><i class="fa fa-phone"></i>
                                 </span>
                                 (61) 99407-8504
@@ -290,7 +290,7 @@
                                     <br>
                                     Reserve sua data e horário de forma simples e rápida.
                                 </p>
-                                <a href="#" class="btn btn-yellow mt-4">Fazer reserva</a>
+                                <a href="#" class="btn btn-yellow mt-4" id="btnReserva" target="_blank">Fazer reserva</a>
                             </div>
                             <div class="col-5">
                                 <div class="card-reserva"></div>
@@ -441,22 +441,7 @@
                     </div>
                     <div class="col-12">
                         <div class="row" id="listaItensResumo">
-                            <div class="col-12 item-carrinho resumo">
-                                <div class="img-produto-resumo">
-                                    <img src="./img/cardapio/burguers/burger-au-poivre-kit-4-pack.3ca0e39b02db753304cd185638dad518.jpg">
-                                </div>
-                                <div class="dados-produto">
-                                    <p class="title-produto-resumo">
-                                        <b>Nome do produto</b>
-                                    </p>
-                                    <p class="price-produto-resumo">
-                                        <b>R$ 10,00</b>
-                                    </p>
-                                </div>
-                                <p class="quantidade-produto-resumo">
-                                    x <b>3</b>
-                                </p>
-                            </div>
+                    
                         </div>
                     </div>
                     <div class="col-12">
@@ -470,9 +455,9 @@
                         </div>
                         <div class="dados-produto">
                             <p class="texto-endereco">
-                                <b id="resumoEndereco">Rua Fernando Machado, 200, bairro centro</b>
+                                <b id="resumoEndereco"></b>
                             </p>
-                            <p class="cidade-endereco" id="cidadeEndereco">Irecê-BA / 72.155-814</p>
+                            <p class="cidade-endereco" id="cidadeEndereco"></p>
                         </div>
                     </div>
                 </div>
@@ -495,9 +480,9 @@
                         <span class="valor-total"><b id="lblValorTotal">R$ 0,00</b></span>
                     </p>
                 </div>
-                <a class="btn btn-yellow float-right" id="btnEtapaPedido" onclick="cardapio.metodos.carregarEtapa(2)">Continuar</a>
-                <a class="btn btn-yellow float-right hidden" id="btnEtapaEndereco" onclick="cardapio.metodos.carregarEtapa(3)">Revisar pedido</a>
-                <a class="btn btn-yellow float-right hidden" id="btnEtapaResumo">Enviar pedido</a>
+                <a class="btn btn-yellow float-right" id="btnEtapaPedido" onclick="cardapio.metodos.carregarEndereco()">Continuar</a>
+                <a class="btn btn-yellow float-right hidden" id="btnEtapaEndereco" onclick="cardapio.metodos.resumoPedido()">Revisar pedido</a>
+                <a href="#" class="btn btn-yellow float-right hidden" id="btnEtapaResumo" target="_blank">Enviar pedido</a>
                 <a class="btn btn-white float-right mr-3 hidden" id="btnVoltar" onclick="cardapio.metodos.voltarEtapa()">Voltar</a>
             </div>
         </div>
