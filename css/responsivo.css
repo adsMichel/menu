@@ -137,4 +137,67 @@
         margin-bottom: 15px !important;
     }
 
+    .depoimentos {
+        padding-bottom: 50px;
+    }
+
+    .reserva {
+        padding-bottom: 50px;
+    }
+
+    .card-secondary {
+        padding: 45px;
+        border-radius: 50px;
+    }
+
+    .container-logo-footer {
+        justify-content: center;
+    }
+
+    .container-texto-footer p {
+        text-align: center;
+    }
+
+    .container-redes-footer {
+        margin-top: 40px;
+        margin-bottom: 50px;
+        justify-content: center;
+    }
+
+    .modal-full {
+        padding: 40px;
+    }
+
+    .modal-full .item-carrinho {
+        padding-left: 0;
+        padding-right: 0;
+    }
+
+    .modal-full .img-produto {
+        position: relative;
+        left: 0;
+    }
+
+    .modal-full .img-produto img {
+        width: 50px;
+    }
+
+    .modal-full .dados-produto {
+        padding-left: 15px;
+        padding-right: 15px;
+        display: grid;
+    }
+
+    .modal-full .title-produto, .modal-full .price-produto {
+        font-size: 16px !important;
+    }
+    
+    .modal-full .add-numero-itens {
+        padding: 2px 10px;
+    }
+
+    .modal-full .form-control {
+        font-size: 16px;
+    }
+
 }
