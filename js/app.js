@@ -16,6 +16,7 @@ cardapio.eventos = {
     init: () => {
         cardapio.metodos.obterItensCardapio();
         cardapio.metodos.carregarBotaoReserva();
+        carregarBotaoLigar();
     }
 }
 
@@ -406,6 +407,28 @@ cardapio.metodos = {
         let URL = `https://wa.me/${CELULAR_EMPRESA}?text=${encode}`;
 
         $("#btnReserva").attr('href', URL);
+    },
+
+    carregarBotaoLigar: () => {
+        
+        $("#btnLigar").attr('href', 'tel:${CELULAR_EMPRESA}');
+
+    },
+
+    // metodo que abre os depoimentos
+    abrirDepoimento: (depoimento) => {
+
+        $("#depoimento-1").addClass('hidden');
+        $("#depoimento-2").addClass('hidden');
+        $("#depoimento-3").addClass('hidden');
+        
+        $("#btnDepoimentos-1").removeClass('active');
+        $("#btnDepoimentos-2").removeClass('active');
+        $("#btnDepoimentos-3").removeClass('active');
+        
+        $("#depoimento-" + depoimento).removeClass('hidden');
+        $("#btnDepoimentos-" + depoimento).addClass('active');
+
     },
 
     mensagem: (texto, cor = 'red', tempo = 2000) => {

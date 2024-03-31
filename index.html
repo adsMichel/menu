@@ -63,7 +63,7 @@
                         <p>Aproveite nosso cardápio! Escolha o que desejar e receba em sua casa de forma rápida e segura.</p>
                         <div>
                             <a href="#cardapio" class="btn btn-yellow mt-4 mr-3">Ver cardápio</a>
-                            <a href="tel:5561994078504" class="btn btn-white btn-icon-left mt-4 mr-3">
+                            <a href="#" class="btn btn-white btn-icon-left mt-4 mr-3" id="btnLigar">
                                 <span class="icon-left"><i class="fa fa-phone"></i>
                                 </span>
                                 (61) 99407-8504
@@ -264,9 +264,9 @@
                             </p>
                         </div>
                     </div>
-                    <div class="btn btn-sm btn-white btn-social mr-3 active">1</div>
-                    <div class="btn btn-sm btn-white btn-social mr-3 ">2</div>
-                    <div class="btn btn-sm btn-white btn-social ">3</div>
+                    <div id="btnDepoimentos-1" class="btn btn-sm btn-white btn-social mr-3 active" onclick="cardapio.metodos.abrirDepoimento(1)">1</div>
+                    <div id="btnDepoimentos-2" class="btn btn-sm btn-white btn-social mr-3" onclick="cardapio.metodos.abrirDepoimento(2)">2</div>
+                    <div id="btnDepoimentos-3" class="btn btn-sm btn-white btn-social" onclick="cardapio.metodos.abrirDepoimento(3)">3</div>
                 </div>
             </div>
         </div>
