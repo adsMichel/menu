@@ -10,13 +10,13 @@ var MEU_ENDERECO = null;
 var VALOR_CARRINHO = 0;
 var VALOR_ENTREGA = 5;
 
-var CELULAR_EMPRESA = '5561994078504';
+var CELULAR_EMPRESA = '5561998860874';
 
 cardapio.eventos = {
     init: () => {
         cardapio.metodos.obterItensCardapio();
         cardapio.metodos.carregarBotaoReserva();
-        carregarBotaoLigar();
+        cardapio.metodos.carregarBotaoLigar();
     }
 }
 
@@ -411,7 +411,7 @@ cardapio.metodos = {
 
     carregarBotaoLigar: () => {
         
-        $("#btnLigar").attr('href', 'tel:${CELULAR_EMPRESA}');
+        $("#btnLigar").attr('href', `tel:${CELULAR_EMPRESA}`);
 
     },
 

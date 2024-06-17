@@ -1,8 +1,42 @@
+@media (min-width: 1200px) {
 
+    .navbar .btn-white {
+        padding: 15px 20px;
+        font-size: 20px;
+    }
+
+    .navbar .btn-icon {
+        padding-right: 70px;
+    }
+
+    .btn-icon .icon {
+        margin-right: 0px;
+        width: 45px;
+        height: 45px;
+        padding-top: 8px;
+        margin-top: -8px;
+    }
+}
 /* Desktop (col-lg) 992px+ */
 
-@media (min-width: 992px) {
+@media (min-width: 992px) and (max-width: 1199px) {
 
+    .navbar .btn-white {
+        padding: 12px 25px;
+        font-size: 18px;
+    }
+
+    .navbar .btn-icon {
+        padding-right: 60px;
+    }
+
+    .btn-icon .icon {
+        margin-right: -20px;
+        width: 36px;
+        height: 36px;
+        padding-top: 5px;
+        margin-top: -5px;
+    }
 }
 
 /* Desktop  e Tablets (col-md) 768px a 991px */
