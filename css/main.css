@@ -255,9 +255,9 @@ a.navbar-brand {
 .card-item .title-produto {
     color: var(--color-black);
     text-overflow: ellipsis;
-    white-space: nowrap;
+    white-space: normal;
     overflow: hidden;
-    height: 40px;
+    height: fit-content;
     margin-bottom: 0;
 }
 

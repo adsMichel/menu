@@ -16,6 +16,9 @@
         padding-top: 8px;
         margin-top: -8px;
     }
+    .card-item .title-produto {
+        overflow: inherit;
+    }
 }
 /* Desktop (col-lg) 992px+ */
 
