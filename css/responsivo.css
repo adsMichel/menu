@@ -136,29 +136,29 @@
 
     .img-produto {
         position: absolute;
-        left: 15px;
+        left: 5px;
     }
 
     .card-item {
         height: 110px;
-        padding-left: 110px;
+        padding-left: 120px;
         justify-content: center;
         align-items: start;
     }
 
     .card-item .img-produto img {
-        width: 80px;
+        width: 100px;
     }
 
     .card-item .title-produto {
         white-space: normal;
         overflow: hidden;
         height: fit-content !important;
-        font-size: 18px;
+        font-size: 16px;
     }
     
     .card-item .price-produto {
-        font-size: 18px !important;
+        font-size: 16px !important;
     }
 
     .title-produto {
@@ -175,7 +175,7 @@
     }
 
     .card-item .add-carrinho {
-        margin-top: 5px;
+        margin-top: 15px;
     }
 
     #itemsCardapio .mb-5 {
