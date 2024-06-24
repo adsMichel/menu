@@ -150,6 +150,17 @@
         width: 80px;
     }
 
+    .card-item .title-produto {
+        white-space: normal;
+        overflow: hidden;
+        height: fit-content !important;
+        font-size: 18px;
+    }
+    
+    .card-item .price-produto {
+        font-size: 18px !important;
+    }
+
     .title-produto {
         margin-top: 0 !important;
         height: 30px !important;
